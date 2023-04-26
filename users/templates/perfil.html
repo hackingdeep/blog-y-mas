@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+           <h2 class="text-center mb-4" style="color: white;">Últimas publicaciones</h2>
+            
+            <div class="row" style="padding-left: 350px;">
+                {% for perfil in perfiles %}
+                    
+               
+                    <div class="col-sm-4 mb-4">
+                        <div class="card" style="background-color: rgb(103, 105, 105);">
+                            <img class="card-img-top" src="{{perfil.avatar.url}}" alt="" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                              <h6 style="color: white;"> {{perfil.apodo}} </h6>
+                                <h5 class="card-title" style="color: white;"></h5>
+                                <p class="card-text" style="color: white;"></p>
+                                <p>
+                                
+                                </p>
+                                <a href="" class="btn btn-primary">Seguir</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+             {% endfor %}
+            </div>
+        </div>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">crear</button>
+</form>
+
+{% endblock %}  

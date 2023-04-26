@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    
+{% for perfil in perfiles %}
+    <a  style="color: rgb(233, 247, 36);padding-left: 700px;font-size: 20px;" href="{% url 'users:perfil' perfil.user.id %}">{{perfil.user.username}}</a>
+{% endfor %}
+
+{% endblock %}

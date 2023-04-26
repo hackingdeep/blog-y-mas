@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="jumbotron" style="padding-left: 20px; color: white;">
+      <h1 class="display-4">Bienvenido a mi blog</h1>
+      <p class="lead" style="color: rgb(255, 232, 232);">Aquí encontrarás contenido interesante sobre diferentes temas.</p>
+      <hr class="my-4">
+      <p style="color: rgb(255, 239, 239);">No dudes en explorar y dejar tus comentarios en las publicaciones.</p>
+  
+    </div>
+    
+    
+
+     
+
+        <div class="container">
+           <h2 class="text-center mb-4" style="color: white;">Últimas publicaciones</h2>
+            
+            <div class="row">
+                {% for post in post_list %}
+                    <div class="col-sm-4 mb-4">
+                        <div class="card" style="background-color: rgb(103, 105, 105);">
+                            <img class="card-img-top" src="{{ post.thumbnail.url }}" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                              <h6 style="color: white;">  {{post.publish_date }}</h6>
+                                <h5 class="card-title" style="color: white;">{{ post.title }}</h5>
+                                <p class="card-text" style="color: white;">{{ post.content|truncatechars:40 }}</p>
+                                <p>
+                                  <span style="color: white;"><i class="fas fa-eye " style="margin-left: 3px; color: rgb(76, 159, 192);"> </i> {{post.postview_set.count}}</span>
+                                  <span style="color: white;"><i class="fas fa-thumbs-up " style="margin-left: 3px; color: rgb(76, 159, 192);"> </i> {{post.likes.count }}</span>
+                                  <span style="color: white;"><i class="fas fa-comments" style="margin-left: 3px; color: rgb(76, 159, 192);"> </i> {{post.comment_set.count}}</span>
+                                </p>
+                                <a href="{% url 'detail' post.slug %}" class="btn btn-primary">Read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                {% endfor %}
+            </div>
+        </div>
+     
+
+ 
+
+
+
+
+    
+
+{% endblock %}

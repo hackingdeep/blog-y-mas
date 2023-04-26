@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Posts de los usuarios que sigues</h2>
+
+  {% if publicaciones %}
+    <ul>
+      {% for post in publicaciones %}
+        <li>
+          <p>Author: {{ post.author.username }}</p>
+          <p>Content: {{ post.content }}</p>
+          <p>Date posted: {{ post.date_posted }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No hay posts de los usuarios que sigues.</p>
+  {% endif %}
+{% endblock %}
